@@ -37,23 +37,28 @@ const loginhandler=()=>{
   });}
   const handleCity = (e)=>{
     // console.log(e.target.value)
-    setUserCity(e.target.vlaue)
-    // console.log(userCity)
+    setUserCity(e.target.value)
   }
   const handleProfile = (e)=>{
     // userProfile.push(e.target.vlaue)
     setUserProfile(e.target.value)
   }
   const handleSubmit=async(e)=>{
-  e.preventDefault();
-    db.collection('profiles').doc(myUserId).add({
-      userName: userName,
+    e.preventDefault();
+    console.log(userCity)
+    console.log(myUserId)
+    console.log(userPhotoUrl)
+    console.log(userName)
+  
+    db.collection('profiles').doc(myUserId).set({
+      name: userName,
       imageUrl: userPhotoUrl,
       city: userCity,
       userId:myUserId,
       profile: userProfile,
+
     })
-    console.log("hola")
+    // console.log("hola")
   }
   return <form onSubmit={handleSubmit}>
    <img src={image} alt="test" onClick={loginhandler}></img>
